@@ -1,6 +1,8 @@
 # OpenSSL::SignatureAlgorithm
 
-Signature Algorithm abstraction on top of openssl ruby gem
+This tiny library introduces `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS` and `OpenSSL::SignatureAlgorithm::RSAPKCS1`, so that you can reason in terms of signature algorithms when signing and/or verifying signatures―instead of keys.
+
+This provides a higher level of abstraction, on top of `openssl`'s gem `OpenSSL::PKey::EC`, `OpenSSL::PKey::EC::Point` and `OpenSSL::PKey::RSA`.
 
 ## Installation
 
