@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = OpenSSL::SignatureAlgorithm::VERSION
   spec.authors       = ["Gonzalo"]
   spec.email         = ["gonzalo@cedarcode.com"]
+  spec.license = "Apache-2.0"
 
   spec.summary       = "Signature Algorithm abstraction on top of openssl ruby gem"
   spec.homepage      = "https://github.com/cedarcode/openssl-signature_algorithm"
