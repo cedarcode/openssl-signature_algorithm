@@ -29,7 +29,7 @@ module OpenSSL
           verification_data,
           salt_length: salt_length,
           mgf1_hash: mgf1_hash_function
-        ) || raise("Signature verification failed")
+        ) || raise(OpenSSL::SignatureAlgorithm::Error, "Signature verification failed")
       end
 
       def salt_length

@@ -21,7 +21,8 @@ module OpenSSL
       end
 
       def verify(signature, verification_data)
-        verify_key.verify(hash_function, signature, verification_data) || raise("Signature verification failed")
+        verify_key.verify(hash_function, signature, verification_data) ||
+          raise(OpenSSL::SignatureAlgorithm::Error, "Signature verification failed")
       end
     end
   end
