@@ -58,6 +58,25 @@ algorithm.verify_key = verify_key
 algorithm.verify(signature, to_be_signed)
 ```
 
+### RSA-PKCS1_v1.5
+
+```ruby
+to_be_signed = "to-be-signed"
+
+# Signer
+algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("256")
+signing_key = algorithm.generate_signing_key
+signature = algorithm.sign(to_be_signed)
+
+# Signer sends verify key to Verifier
+verify_key = signing_key.verify_key
+
+# Verifier
+algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("256")
+algorithm.verify_key = verify_key
+algorithm.verify(signature, to_be_signed)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
