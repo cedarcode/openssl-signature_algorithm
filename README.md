@@ -4,6 +4,9 @@ This tiny library introduces `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::Sig
 
 This provides a higher level of abstraction, on top of `openssl`'s gem `OpenSSL::PKey::EC`, `OpenSSL::PKey::EC::Point` and `OpenSSL::PKey::RSA`.
 
+[![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square)](https://rubygems.org/gems/openssl-signature_algorithm)
+[![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
+
 ## Installation
 
 Add this line to your application's Gemfile:
