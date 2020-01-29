@@ -19,7 +19,7 @@ module OpenSSL
       end
 
       def sign(data)
-        signing_key.sign_pss(hash_function, data, salt_length: salt_length, mgf1_hash: mgf1_hash_function)
+        signing_key.sign_pss(hash_function, data, salt_length: :max, mgf1_hash: mgf1_hash_function)
       end
 
       def verify(signature, verification_data)
@@ -27,13 +27,9 @@ module OpenSSL
           hash_function,
           signature,
           verification_data,
-          salt_length: salt_length,
+          salt_length: :auto,
           mgf1_hash: mgf1_hash_function
         ) || raise(OpenSSL::SignatureAlgorithm::Error, "Signature verification failed")
-      end
-
-      def salt_length
-        :auto
       end
 
       def mgf1_hash_function
