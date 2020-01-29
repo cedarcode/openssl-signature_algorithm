@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "openssl"
+require "openssl/signature_algorithm/error"
 
 module OpenSSL
   module SignatureAlgorithm
