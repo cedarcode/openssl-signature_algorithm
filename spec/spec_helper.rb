@@ -2,6 +2,7 @@
 
 require "bundler/setup"
 require "openssl/signature_algorithm"
+require "byebug"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
