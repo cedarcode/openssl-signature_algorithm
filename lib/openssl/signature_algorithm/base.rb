@@ -22,7 +22,14 @@ module OpenSSL
       end
 
       def verify(signature, verification_data)
-        verify_key.verify(hash_function, signature, verification_data) ||
+        formatted_signature =
+          if respond_to?(:formatted_signature, true)
+            formatted_signature(signature)
+          else
+            signature
+          end
+
+        verify_key.verify(hash_function, formatted_signature, verification_data) ||
           raise(OpenSSL::SignatureAlgorithm::Error, "Signature verification failed")
       end
     end

@@ -53,4 +53,23 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     algorithm.verify_key = verify_key
     algorithm.verify(signature, to_be_signed)
   end
+
+  it "works for raw (non DER) signature" do
+    to_be_signed = "to-be-signed"
+
+    # Signer
+    algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
+    signing_key = algorithm.generate_signing_key
+    signature = algorithm.sign(to_be_signed)
+
+    raw_signature = OpenSSL::ASN1.decode(signature).value.map { |v| v.value.to_s(2) }.join
+
+    # Signer sends verify key to Verifier
+    verify_key = signing_key.verify_key
+
+    # Verifier
+    algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
+    algorithm.verify_key = verify_key
+    algorithm.verify(raw_signature, to_be_signed)
+  end
 end
