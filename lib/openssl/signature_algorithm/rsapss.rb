@@ -33,7 +33,7 @@ module OpenSSL
       end
 
       def salt_length
-        :digest
+        :auto
       end
 
       def mgf1_hash_function
