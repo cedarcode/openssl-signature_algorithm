@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["gonzalo@cedarcode.com"]
   spec.license = "Apache-2.0"
 
-  spec.summary       = "Signature Algorithm abstraction for openssl ruby gem"
+  spec.summary = "Signature Algorithm abstraction for openssl ruby gem"
   spec.description = <<-DESC
     This tiny library introduces `OpenSSL::SignatureAlgorithm::ECDSA`,
     `OpenSSL::SignatureAlgorithm::RSAPSS` and `OpenSSL::SignatureAlgorithm::RSAPKCS1`,
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     verifying signatures―instead of keys.
   DESC
 
-  spec.homepage      = "https://github.com/cedarcode/openssl-signature_algorithm"
+  spec.homepage = "https://github.com/cedarcode/openssl-signature_algorithm"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
