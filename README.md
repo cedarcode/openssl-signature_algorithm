@@ -1,8 +1,9 @@
 # OpenSSL::SignatureAlgorithm
 
-This tiny library introduces `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS` and `OpenSSL::SignatureAlgorithm::RSAPKCS1`, so that you can reason in terms of signature algorithms when signing and/or verifying signatures―instead of keys.
-
-This provides a higher level of abstraction, on top of `openssl`'s gem `OpenSSL::PKey::EC`, `OpenSSL::PKey::EC::Point` and `OpenSSL::PKey::RSA`.
+Provides `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS`
+and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrapers on top of `OpenSSL::PKey::EC`
+and `OpenSSL::PKey::RSA`, so that you can reason in terms of signature algorithms when
+signing and/or verifying signatures, instead of keys.
 
 [![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square)](https://rubygems.org/gems/openssl-signature_algorithm)
 [![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
