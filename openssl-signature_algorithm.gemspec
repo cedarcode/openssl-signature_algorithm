@@ -5,7 +5,7 @@ require_relative 'lib/openssl/signature_algorithm/version'
 Gem::Specification.new do |spec|
   spec.name          = "openssl-signature_algorithm"
   spec.version       = OpenSSL::SignatureAlgorithm::VERSION
-  spec.authors       = ["Gonzalo"]
+  spec.authors       = ["Gonzalo Rodriguez"]
   spec.email         = ["gonzalo@cedarcode.com"]
   spec.license = "Apache-2.0"
 
