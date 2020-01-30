@@ -3,6 +3,12 @@
 require "openssl/signature_algorithm/rsapss"
 
 RSpec.describe "OpenSSL::SignatureAlgorithm::RSAPSS" do
+  before do
+    if !OpenSSL::PKey::RSA.instance_methods.include?(:verify_pss)
+      skip "openssl gem v#{OpenSSL::VERSION} doesn't support RSA-PSS"
+    end
+  end
+
   it "works for 256" do
     to_be_signed = "to-be-signed"
 
