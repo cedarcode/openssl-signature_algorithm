@@ -5,7 +5,7 @@ and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrapers on top of `OpenS
 and `OpenSSL::PKey::RSA`, so that you can reason in terms of signature algorithms when
 signing and/or verifying signatures, instead of keys.
 
-[![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square)](https://rubygems.org/gems/openssl-signature_algorithm)
+[![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square&color=informational)](https://rubygems.org/gems/openssl-signature_algorithm)
 [![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
 
 ## Installation
