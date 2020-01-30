@@ -1,4 +1,5 @@
 ---
+dist: bionic
 language: ruby
 cache: bundler
 rvm:
