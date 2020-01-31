@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.4.0] - 2020-01-31
+
+### Added
+
+- `VerifyKey` serialization and deserialization for easy transmission over the network
+
 ## [v0.3.0] - 2020-01-30
 
 ### Added
@@ -26,6 +32,7 @@
 - `OpenSSL::SignatureAlgorithm::RSAPSS`
 - `OpenSSL::SignatureAlgorithm::RSAPKCS1`
 
+[v0.4.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.3.0...v0.4.0/
 [v0.3.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.2.0...v0.3.0/
 [v0.2.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.1.1...v0.2.0/
 [v0.1.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.1.0...v0.1.1/
