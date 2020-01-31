@@ -18,7 +18,7 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     verify_key = OpenSSL::SignatureAlgorithm::ECDSA::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 
   it "works for 384" do
@@ -36,7 +36,7 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     verify_key = OpenSSL::SignatureAlgorithm::ECDSA::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("384")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 
   it "works for 512" do
@@ -54,7 +54,7 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     verify_key = OpenSSL::SignatureAlgorithm::ECDSA::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("512")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 
   it "works for raw (non DER) signature" do
@@ -73,6 +73,6 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     # Verifier
     algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
     algorithm.verify_key = verify_key
-    algorithm.verify(raw_signature, to_be_signed)
+    expect(algorithm.verify(raw_signature, to_be_signed)).to be_truthy
   end
 end

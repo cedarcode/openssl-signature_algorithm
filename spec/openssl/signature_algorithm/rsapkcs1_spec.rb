@@ -18,7 +18,7 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::RSAPKCS1" do
     verify_key = OpenSSL::SignatureAlgorithm::RSAPKCS1::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("256")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 
   it "works for 384" do
@@ -36,7 +36,7 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::RSAPKCS1" do
     verify_key = OpenSSL::SignatureAlgorithm::RSAPKCS1::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("384")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 
   it "works for 512" do
@@ -54,6 +54,6 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::RSAPKCS1" do
     verify_key = OpenSSL::SignatureAlgorithm::RSAPKCS1::VerifyKey.deserialize(verify_key_string)
     algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("512")
     algorithm.verify_key = verify_key
-    algorithm.verify(signature, to_be_signed)
+    expect(algorithm.verify(signature, to_be_signed)).to be_truthy
   end
 end
