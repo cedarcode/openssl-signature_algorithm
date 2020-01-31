@@ -19,10 +19,25 @@ module OpenSSL
       end
 
       class VerifyKey < OpenSSL::PKey::EC::Point
-        def verify(*args)
-          ec_key = OpenSSL::PKey::EC.new(group)
-          ec_key.public_key = self
+        def self.deserialize(pem_string)
+          new(OpenSSL::PKey::EC.new(pem_string).public_key)
+        end
 
+        def serialize
+          ec_key.to_pem
+        end
+
+        def ec_key
+          @ec_key ||=
+            begin
+              ec_key = OpenSSL::PKey::EC.new(group)
+              ec_key.public_key = self
+
+              ec_key
+            end
+        end
+
+        def verify(*args)
           ec_key.verify(*args)
         end
       end
