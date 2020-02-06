@@ -2,6 +2,12 @@
 dist: bionic
 language: ruby
 cache: bundler
+
+addons:
+  apt:
+    packages:
+    - libssl1.0-dev
+
 rvm:
   - 2.7.0
   - 2.6.5
