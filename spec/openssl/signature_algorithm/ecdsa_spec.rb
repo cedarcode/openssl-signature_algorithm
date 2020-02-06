@@ -3,6 +3,12 @@
 require "openssl/signature_algorithm/ecdsa"
 
 RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
+  before do
+    if !OpenSSL::PKey::EC.instance_methods.include?(:private?)
+      skip "openssl gem v#{OpenSSL::VERSION} doesn't support ECDSA"
+    end
+  end
+
   it "works for 256" do
     to_be_signed = "to-be-signed"
 
