@@ -1,7 +1,7 @@
 # OpenSSL::SignatureAlgorithm
 
 Provides `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS`
-and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrapers on top of `OpenSSL::PKey::EC`
+and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrappers on top of `OpenSSL::PKey::EC`
 and `OpenSSL::PKey::RSA`, so that you can reason in terms of signature algorithms when
 signing and/or verifying signatures, instead of keys.
 
