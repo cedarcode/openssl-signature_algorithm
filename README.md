@@ -6,7 +6,7 @@ and `OpenSSL::PKey::RSA`, so that you can reason in terms of signature algorithm
 signing and/or verifying signatures, instead of keys.
 
 [![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square&color=informational)](https://rubygems.org/gems/openssl-signature_algorithm)
-[![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
+[![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm/master.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
 
 ## Installation
 
