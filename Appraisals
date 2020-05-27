@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+appraise "openssl_head" do
+  gem "openssl", git: "https://github.com/ruby/openssl"
+end
+
 appraise "openssl_2_2" do
   gem "openssl", "~> 2.2.0"
 end
@@ -12,6 +16,5 @@ appraise "openssl_2_0" do
   gem "openssl", "~> 2.0.0"
 end
 
-appraise "openssl_head" do
-  gem "openssl", git: "https://github.com/ruby/openssl"
+appraise "openssl_default" do
 end
