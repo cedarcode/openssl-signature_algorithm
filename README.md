@@ -32,7 +32,7 @@ Or install it yourself as:
 to_be_signed = "to-be-signed"
 
 # Signer
-algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new
 signing_key = algorithm.generate_signing_key
 signature = algorithm.sign(to_be_signed)
 
@@ -41,7 +41,7 @@ verify_key_string = signing_key.verify_key.serialize
 
 # Verifier
 verify_key = OpenSSL::SignatureAlgorithm::ECDSA::VerifyKey.deserialize(verify_key_string)
-algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::ECDSA.new
 algorithm.verify_key = verify_key
 algorithm.verify(signature, to_be_signed)
 ```
@@ -52,7 +52,7 @@ algorithm.verify(signature, to_be_signed)
 to_be_signed = "to-be-signed"
 
 # Signer
-algorithm = OpenSSL::SignatureAlgorithm::RSAPSS.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::RSAPSS.new
 signing_key = algorithm.generate_signing_key
 signature = algorithm.sign(to_be_signed)
 
@@ -61,7 +61,7 @@ verify_key_string = signing_key.verify_key.serialize
 
 # Verifier
 verify_key = OpenSSL::SignatureAlgorithm::RSAPSS::VerifyKey.deserialize(verify_key_string)
-algorithm = OpenSSL::SignatureAlgorithm::RSAPSS.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::RSAPSS.new
 algorithm.verify_key = verify_key
 algorithm.verify(signature, to_be_signed)
 ```
@@ -72,7 +72,7 @@ algorithm.verify(signature, to_be_signed)
 to_be_signed = "to-be-signed"
 
 # Signer
-algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new
 signing_key = algorithm.generate_signing_key
 signature = algorithm.sign(to_be_signed)
 
@@ -81,7 +81,7 @@ verify_key_string = signing_key.verify_key.serialize
 
 # Verifier
 verify_key = OpenSSL::SignatureAlgorithm::RSAPKCS1::VerifyKey.deserialize(verify_key_string)
-algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new("256")
+algorithm = OpenSSL::SignatureAlgorithm::RSAPKCS1.new
 algorithm.verify_key = verify_key
 algorithm.verify(signature, to_be_signed)
 ```

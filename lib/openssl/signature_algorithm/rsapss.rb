@@ -1,33 +1,11 @@
 # frozen_string_literal: true
 
 require "openssl"
-require "openssl/signature_algorithm/base"
+require "openssl/signature_algorithm/rsa"
 
 module OpenSSL
   module SignatureAlgorithm
-    class RSAPSS < Base
-      class SigningKey < OpenSSL::PKey::RSA
-        def verify_key
-          VerifyKey.new(public_key.to_pem)
-        end
-      end
-
-      class VerifyKey < OpenSSL::PKey::RSA
-        class << self
-          alias_method :deserialize, :new
-        end
-
-        def serialize
-          to_pem
-        end
-      end
-
-      DEFAULT_KEY_SIZE = 2048
-
-      def generate_signing_key(size: DEFAULT_KEY_SIZE)
-        @signing_key = SigningKey.new(size)
-      end
-
+    class RSAPSS < RSA
       def sign(data)
         signing_key.sign_pss(hash_function, data, salt_length: :max, mgf1_hash: mgf1_hash_function)
       end
@@ -39,7 +17,7 @@ module OpenSSL
           verification_data,
           salt_length: :auto,
           mgf1_hash: mgf1_hash_function
-        ) || raise(OpenSSL::SignatureAlgorithm::Error, "Signature verification failed")
+        ) || raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
       end
 
       def mgf1_hash_function

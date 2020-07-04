@@ -42,19 +42,24 @@ module OpenSSL
         end
       end
 
-      CURVE_BY_DIGEST_LENGTH = {
-        "256" => "prime256v1",
-        "384" => "secp384r1",
-        "512" => "secp521r1"
-      }.freeze
+      ACCEPTED_PARAMETERS = [
+        { curve: "prime256v1", hash_function: "SHA256" },
+        { curve: "secp384r1", hash_function: "SHA384" },
+        { curve: "secp521r1", hash_function: "SHA512" }
+      ].freeze
 
-      def generate_signing_key
-        @signing_key = SigningKey.new(curve_name)
+      attr_reader :curve, :hash_function
+
+      def initialize(curve: nil, hash_function: nil)
+        @curve, @hash_function = pick_parameters(curve, hash_function)
       end
 
-      def curve_name
-        CURVE_BY_DIGEST_LENGTH[digest_length] ||
-          raise(OpenSSL::SignatureAlgorithm::Error, "Unsupported digest length #{digest_length}")
+      def generate_signing_key
+        @signing_key = SigningKey.new(curve)
+      end
+
+      def compatible_verify_key?(key)
+        super && key.respond_to?(:group) && key.group.curve_name == curve
       end
 
       private
@@ -78,6 +83,28 @@ module OpenSSL
 
       def verify_key_length
         verify_key.group.degree
+      end
+
+      def pick_parameters(curve, hash_function)
+        parameters = ACCEPTED_PARAMETERS.detect do |params|
+          if curve
+            if hash_function
+              params[:curve] == curve && params[:hash_function] == hash_function
+            else
+              params[:curve] == curve
+            end
+          elsif hash_function
+            params[:hash_function] == hash_function
+          else
+            true
+          end
+        end
+
+        if parameters
+          [parameters[:curve], parameters[:hash_function]]
+        else
+          raise(OpenSSL::SignatureAlgorithm::UnsupportedParameterError, "Unsupported algorithm parameters")
+        end
       end
     end
   end
