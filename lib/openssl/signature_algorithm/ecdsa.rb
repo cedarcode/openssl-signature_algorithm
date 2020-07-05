@@ -45,7 +45,8 @@ module OpenSSL
       ACCEPTED_PARAMETERS = [
         { curve: "prime256v1", hash_function: "SHA256" },
         { curve: "secp384r1", hash_function: "SHA384" },
-        { curve: "secp521r1", hash_function: "SHA512" }
+        { curve: "secp521r1", hash_function: "SHA512" },
+        { curve: "secp256k1", hash_function: "SHA256" }
       ].freeze
 
       attr_reader :curve, :hash_function

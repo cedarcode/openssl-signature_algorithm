@@ -133,6 +133,23 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
     end
   end
 
+  context "secp256k1 curve" do
+    let(:algorithm_parameters) { { curve: "secp256k1" } }
+
+    it "picks SHA256" do
+      expect(signer_algorithm.hash_function).to eq("SHA256")
+    end
+
+    it "works" do
+      # Signer sends verify key to Verifier
+      verify_key_string = signing_key.verify_key.serialize
+
+      # Verifier
+      verifier_algorithm.verify_key = OpenSSL::SignatureAlgorithm::ECDSA::VerifyKey.deserialize(verify_key_string)
+      expect(verifier_algorithm.verify(signature, to_be_signed)).to be_truthy
+    end
+  end
+
   context "when signer and verifier algorithms are different" do
     let(:signer_algorithm) { OpenSSL::SignatureAlgorithm::ECDSA.new(curve: "secp384r1") }
     let(:verifier_algorithm) { OpenSSL::SignatureAlgorithm::ECDSA.new(curve: "secp521r1") }
