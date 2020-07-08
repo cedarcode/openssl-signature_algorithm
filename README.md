@@ -1,9 +1,13 @@
 # OpenSSL::SignatureAlgorithm
 
+> ECDSA, RSA-PSS and RSA-PKCS#1 signature algorithms for ruby
+
+Sign and verify using signature algorithm wrappers, instead of key objects.
+
 Provides `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS`
 and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrappers on top of `OpenSSL::PKey::EC`
-and `OpenSSL::PKey::RSA`, so that you can reason in terms of signature algorithms when
-signing and/or verifying signatures, instead of keys.
+and `OpenSSL::PKey::RSA`, so that you can reason in terms of the algorithms and do less when
+signing or verifying signatures.
 
 [![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square&color=informational)](https://rubygems.org/gems/openssl-signature_algorithm)
 [![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm/master.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)

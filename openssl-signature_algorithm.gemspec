@@ -9,14 +9,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["gonzalo@cedarcode.com"]
   spec.license = "Apache-2.0"
 
-  spec.summary = "OpenSSL::SignatureAlgorithm helpers for signing and verifying signatures with openssl ruby gem"
-
-  spec.description = <<-DESC
-    Provides OpenSSL::SignatureAlgorithm::ECDSA, OpenSSL::SignatureAlgorithm::RSAPSS
-    and OpenSSL::SignatureAlgorithm::RSAPKCS1 ruby object wrappers on top of OpenSSL::PKey::EC
-    and OpenSSL::PKey::RSA, so that you can reason in terms of signature algorithms when
-    signing and/or verifying signatures, instead of keys.
-  DESC
+  spec.summary = "ECDSA, RSA-PSS and RSA-PKCS#1 algorithms for ruby"
+  spec.description = spec.summary
 
   spec.homepage = "https://github.com/cedarcode/openssl-signature_algorithm"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
