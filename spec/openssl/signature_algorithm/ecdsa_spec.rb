@@ -167,7 +167,9 @@ RSpec.describe "OpenSSL::SignatureAlgorithm::ECDSA" do
 
   it "works for raw (non DER) signature" do
     # Signer
-    raw_signature = OpenSSL::ASN1.decode(signature).value.map { |v| v.value.to_s(2) }.join
+    byte_length = OpenSSL::SignatureAlgorithm::ECDSA::BYTE_LENGTH
+    integer_length = (signing_key.group.degree + byte_length - 1) / byte_length
+    raw_signature = OpenSSL::ASN1.decode(signature).value.map { |v| v.value.to_s(2).rjust(integer_length, "\x00") }.join
 
     # Signer sends verify key to Verifier
     verify_key_string = signing_key.verify_key.serialize
