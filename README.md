@@ -9,6 +9,8 @@ and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrappers on top of `Open
 and `OpenSSL::PKey::RSA`, so that you can reason in terms of the algorithms and do less when
 signing or verifying signatures.
 
+Loosely inspired by [rbnacl](https://github.com/RubyCrypto/rbnacl)'s [Digital Signatures](https://github.com/RubyCrypto/rbnacl/wiki/Digital-Signatures) interface.
+
 [![Gem](https://img.shields.io/gem/v/openssl-signature_algorithm.svg?style=flat-square&color=informational)](https://rubygems.org/gems/openssl-signature_algorithm)
 [![Travis](https://img.shields.io/travis/cedarcode/openssl-signature_algorithm/master.svg?style=flat-square)](https://travis-ci.org/cedarcode/openssl-signature_algorithm)
 
