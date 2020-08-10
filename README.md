@@ -52,6 +52,26 @@ algorithm.verify_key = verify_key
 algorithm.verify(signature, to_be_signed)
 ```
 
+### EdDSA
+
+```ruby
+to_be_signed = "to-be-signed"
+
+# Signer
+algorithm = OpenSSL::SignatureAlgorithm::EdDSA.new
+signing_key = algorithm.generate_signing_key
+signature = algorithm.sign(to_be_signed)
+
+# Signer sends verify key to Verifier
+verify_key_string = signing_key.verify_key.serialize
+
+# Verifier
+verify_key = OpenSSL::SignatureAlgorithm::EdDSA::VerifyKey.deserialize(verify_key_string)
+algorithm = OpenSSL::SignatureAlgorithm::EdDSA.new
+algorithm.verify_key = verify_key
+algorithm.verify(signature, to_be_signed)
+```
+
 ### RSA-PSS
 
 ```ruby

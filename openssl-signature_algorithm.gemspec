@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["gonzalo@cedarcode.com"]
   spec.license = "Apache-2.0"
 
-  spec.summary = "ECDSA, RSA-PSS and RSA-PKCS#1 algorithms for ruby"
+  spec.summary = "ECDSA, EdDSA, RSA-PSS and RSA-PKCS#1 algorithms for ruby"
   spec.description = spec.summary
 
   spec.homepage = "https://github.com/cedarcode/openssl-signature_algorithm"
