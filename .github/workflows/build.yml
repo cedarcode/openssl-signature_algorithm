@@ -25,7 +25,6 @@ jobs:
           - openssl_2_2
           - openssl_2_1
           - openssl_2_0
-          - openssl_default
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
@@ -35,4 +34,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
+    - run: ruby -v
+    - run: bundle exec ruby -e 'require "openssl"; puts OpenSSL::VERSION'
+    - run: bundle exec ruby -e 'require "openssl"; puts OpenSSL::OPENSSL_VERSION'
     - run: bundle exec rake
