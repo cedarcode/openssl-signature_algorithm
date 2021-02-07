@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: ['2.7.2', '2.6.6', '2.5.8', '2.4.10']
+        ruby-version: ['3.0.0', '2.7.2', '2.6.6', '2.5.8', '2.4.10']
         gemfile: ['openssl_2_2', 'openssl_2_1', 'openssl_2_0', 'openssl_default']
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
