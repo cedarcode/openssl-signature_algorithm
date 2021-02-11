@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1.0] - 2021-02-11
+
+### Added
+
+- EdDSA support added (requires adding the `ed25519` gem to your `Gemfile`) ([@santiagorodriguez96])
+
 ## [v1.0.0] - 2020-07-08
 
 ### Added
@@ -72,9 +78,12 @@
 - `OpenSSL::SignatureAlgorithm::RSAPSS`
 - `OpenSSL::SignatureAlgorithm::RSAPKCS1`
 
+[v1.1.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.0.0...v1.1.0/
 [v1.0.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.4.0...v1.0.0/
 [v0.4.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.3.0...v0.4.0/
 [v0.3.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.2.0...v0.3.0/
 [v0.2.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.1.1...v0.2.0/
 [v0.1.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.1.0...v0.1.1/
 [v0.1.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/41887c277dc7fa0c884ccf8924cf990ff76784d9...v0.1.0/
+
+[@santiagorodriguez96]: https://github.com/santiagorodriguez96
