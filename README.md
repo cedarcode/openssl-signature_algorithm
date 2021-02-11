@@ -57,6 +57,8 @@ algorithm.verify(signature, to_be_signed)
 Requires adding the `ed25519` gem to your `Gemfile`
 
 ```ruby
+require "openssl/signature_algorithm/eddsa"
+
 to_be_signed = "to-be-signed"
 
 # Signer
