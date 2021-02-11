@@ -1,6 +1,6 @@
 # OpenSSL::SignatureAlgorithm
 
-> ECDSA, RSA-PSS and RSA-PKCS#1 signature algorithms for ruby
+> ECDSA, EdDSA, RSA-PSS and RSA-PKCS#1 signature algorithms for ruby
 
 Sign and verify using signature algorithm wrappers, instead of key objects.
 
@@ -53,6 +53,8 @@ algorithm.verify(signature, to_be_signed)
 ```
 
 ### EdDSA
+
+Requires adding the `ed25519` gem to your `Gemfile`
 
 ```ruby
 to_be_signed = "to-be-signed"
