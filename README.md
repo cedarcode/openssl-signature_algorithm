@@ -4,7 +4,7 @@
 
 Sign and verify using signature algorithm wrappers, instead of key objects.
 
-Provides `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS`
+Provides `OpenSSL::SignatureAlgorithm::ECDSA`, `OpenSSL::SignatureAlgorithm::EdDSA`, `OpenSSL::SignatureAlgorithm::RSAPSS`
 and `OpenSSL::SignatureAlgorithm::RSAPKCS1` ruby object wrappers on top of `OpenSSL::PKey::EC`
 and `OpenSSL::PKey::RSA`, so that you can reason in terms of the algorithms and do less when
 signing or verifying signatures.
