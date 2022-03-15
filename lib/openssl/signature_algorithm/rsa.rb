@@ -1,12 +1,26 @@
 # frozen_string_literal: true
 
+require "forwardable"
 require "openssl"
 require "openssl/signature_algorithm/base"
 
 module OpenSSL
   module SignatureAlgorithm
     class RSA < Base
-      class SigningKey < OpenSSL::PKey::RSA
+      class SigningKey
+        extend Forwardable
+
+        def_delegators :@pkey, :sign, :verify
+        def_delegators :@pkey, :public_key, :private_key, :to_pem, :to_der, :public?, :private?, :export, :to_s
+        def_delegators :@pkey, :public_encrypt, :public_decrypt, :private_encrypt, :private_decrypt
+        def_delegators :@pkey, :sign_pss, :verify_pss
+        def_delegators :@pkey, :blinding_off!, :blinding_on!
+        def_delegators :@pkey, :params, :to_text
+
+        def initialize(*args)
+          @pkey = OpenSSL::PKey::RSA.generate(*args)
+        end
+
         def verify_key
           VerifyKey.new(public_key.to_pem)
         end

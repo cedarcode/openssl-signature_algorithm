@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "forwardable"
 require "openssl"
 require "openssl/signature_algorithm/base"
 
@@ -8,9 +9,15 @@ module OpenSSL
     class ECDSA < Base
       BYTE_LENGTH = 8
 
-      class SigningKey < OpenSSL::PKey::EC
+      class SigningKey
+        extend Forwardable
+
+        def_delegators :@pkey, :sign, :verify
+        def_delegators :@pkey, :public_key, :private_key, :to_pem, :to_der, :public?, :private?, :export, :to_s
+        def_delegators :@pkey, :group, :check_key, :dh_compute_key, :dsa_sign_asn1, :dsa_verify_asn1
+
         def initialize(*args)
-          super(*args).generate_key
+          @pkey = OpenSSL::PKey::EC.generate(*args)
         end
 
         def verify_key
@@ -30,10 +37,16 @@ module OpenSSL
         def ec_key
           @ec_key ||=
             begin
-              ec_key = OpenSSL::PKey::EC.new(group)
-              ec_key.public_key = self
+              # RFC5480 SubjectPublicKeyInfo
+              asn1 = OpenSSL::ASN1::Sequence([
+                OpenSSL::ASN1::Sequence([
+                  OpenSSL::ASN1::ObjectId("id-ecPublicKey"),
+                  OpenSSL::ASN1::ObjectId(group.curve_name),
+                ]),
+                OpenSSL::ASN1::BitString(to_octet_string(:uncompressed))
+              ])
 
-              ec_key
+              OpenSSL::PKey::EC.new(asn1.to_der)
             end
         end
 
