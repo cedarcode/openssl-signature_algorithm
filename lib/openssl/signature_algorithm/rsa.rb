@@ -7,13 +7,9 @@ require "openssl/signature_algorithm/base"
 module OpenSSL
   module SignatureAlgorithm
     class RSA < Base
-      class SigningKey < Delegator
-        def __getobj__
-          @pkey
-        end
-
+      class SigningKey < DelegateClass(OpenSSL::PKey::RSA)
         def initialize(*args)
-          @pkey = OpenSSL::PKey::RSA.new(*args)
+          super(OpenSSL::PKey::RSA.new(*args))
         end
 
         def verify_key
@@ -21,17 +17,13 @@ module OpenSSL
         end
       end
 
-      class VerifyKey < Delegator
-        def __getobj__
-          @pkey
+      class VerifyKey < DelegateClass(OpenSSL::PKey::RSA)
+        class << self
+          alias_method :deserialize, :new
         end
 
         def initialize(*args)
-          @pkey = OpenSSL::PKey::RSA.new(*args)
-        end
-
-        class << self
-          alias_method :deserialize, :new
+          super(OpenSSL::PKey::RSA.new(*args))
         end
 
         def serialize
