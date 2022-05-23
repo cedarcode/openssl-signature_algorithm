@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "forwardable"
+require "delegate"
 require "openssl"
 require "openssl/signature_algorithm/base"
 
@@ -9,15 +9,9 @@ module OpenSSL
     class ECDSA < Base
       BYTE_LENGTH = 8
 
-      class SigningKey
-        extend Forwardable
-
-        def_delegators :@pkey, :sign, :verify
-        def_delegators :@pkey, :public_key, :private_key, :to_pem, :to_der, :public?, :private?, :export, :to_s
-        def_delegators :@pkey, :group, :check_key, :dh_compute_key, :dsa_sign_asn1, :dsa_verify_asn1
-
+      class SigningKey < DelegateClass(OpenSSL::PKey::EC)
         def initialize(*args)
-          @pkey = OpenSSL::PKey::EC.generate(*args)
+          super(OpenSSL::PKey::EC.generate(*args))
         end
 
         def verify_key
@@ -25,7 +19,11 @@ module OpenSSL
         end
       end
 
-      class VerifyKey < OpenSSL::PKey::EC::Point
+      class VerifyKey < DelegateClass(OpenSSL::PKey::EC::Point)
+        def initialize(*args)
+          super(OpenSSL::PKey::EC::Point.new(*args))
+        end
+
         def self.deserialize(pem_string)
           new(OpenSSL::PKey::EC.new(pem_string).public_key)
         end
