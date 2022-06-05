@@ -1,20 +1,29 @@
 # frozen_string_literal: true
 
+require "delegate"
 require "openssl"
 require "openssl/signature_algorithm/base"
 
 module OpenSSL
   module SignatureAlgorithm
     class RSA < Base
-      class SigningKey < OpenSSL::PKey::RSA
+      class SigningKey < DelegateClass(OpenSSL::PKey::RSA)
+        def initialize(*args)
+          super(OpenSSL::PKey::RSA.new(*args))
+        end
+
         def verify_key
           VerifyKey.new(public_key.to_pem)
         end
       end
 
-      class VerifyKey < OpenSSL::PKey::RSA
+      class VerifyKey < DelegateClass(OpenSSL::PKey::RSA)
         class << self
           alias_method :deserialize, :new
+        end
+
+        def initialize(*args)
+          super(OpenSSL::PKey::RSA.new(*args))
         end
 
         def serialize

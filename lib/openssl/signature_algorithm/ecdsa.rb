@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "delegate"
 require "openssl"
 require "openssl/signature_algorithm/base"
 
@@ -8,9 +9,9 @@ module OpenSSL
     class ECDSA < Base
       BYTE_LENGTH = 8
 
-      class SigningKey < OpenSSL::PKey::EC
+      class SigningKey < DelegateClass(OpenSSL::PKey::EC)
         def initialize(*args)
-          super(*args).generate_key
+          super(OpenSSL::PKey::EC.generate(*args))
         end
 
         def verify_key
@@ -18,7 +19,11 @@ module OpenSSL
         end
       end
 
-      class VerifyKey < OpenSSL::PKey::EC::Point
+      class VerifyKey < DelegateClass(OpenSSL::PKey::EC::Point)
+        def initialize(*args)
+          super(OpenSSL::PKey::EC::Point.new(*args))
+        end
+
         def self.deserialize(pem_string)
           new(OpenSSL::PKey::EC.new(pem_string).public_key)
         end
@@ -30,10 +35,16 @@ module OpenSSL
         def ec_key
           @ec_key ||=
             begin
-              ec_key = OpenSSL::PKey::EC.new(group)
-              ec_key.public_key = self
+              # RFC5480 SubjectPublicKeyInfo
+              asn1 = OpenSSL::ASN1::Sequence([
+                OpenSSL::ASN1::Sequence([
+                  OpenSSL::ASN1::ObjectId("id-ecPublicKey"),
+                  OpenSSL::ASN1::ObjectId(group.curve_name),
+                ]),
+                OpenSSL::ASN1::BitString(to_octet_string(:uncompressed))
+              ])
 
-              ec_key
+              OpenSSL::PKey::EC.new(asn1.to_der)
             end
         end
 
