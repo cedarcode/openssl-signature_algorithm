@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.1] - 2022-06-05
+
+- Support OpenSSL ~>3.0.0. Credits to @ClearlyClaire <3
+
 ## [v1.1.1] - 2021-02-11
 
 ### Fixed
@@ -84,6 +88,7 @@
 - `OpenSSL::SignatureAlgorithm::RSAPSS`
 - `OpenSSL::SignatureAlgorithm::RSAPKCS1`
 
+[v1.2.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.1.1...v1.2.1/
 [v1.1.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.1.0...v1.1.1/
 [v1.1.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.0.0...v1.1.0/
 [v1.0.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v0.4.0...v1.0.0/
@@ -94,3 +99,4 @@
 [v0.1.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/41887c277dc7fa0c884ccf8924cf990ff76784d9...v0.1.0/
 
 [@santiagorodriguez96]: https://github.com/santiagorodriguez96
+[@ClearlyClaire]: https://github.com/clearlyclaire
