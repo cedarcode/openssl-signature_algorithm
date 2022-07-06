@@ -36,13 +36,17 @@ module OpenSSL
           @ec_key ||=
             begin
               # RFC5480 SubjectPublicKeyInfo
-              asn1 = OpenSSL::ASN1::Sequence([
-                OpenSSL::ASN1::Sequence([
-                  OpenSSL::ASN1::ObjectId("id-ecPublicKey"),
-                  OpenSSL::ASN1::ObjectId(group.curve_name),
-                ]),
-                OpenSSL::ASN1::BitString(to_octet_string(:uncompressed))
-              ])
+              asn1 = OpenSSL::ASN1::Sequence(
+                [
+                  OpenSSL::ASN1::Sequence(
+                    [
+                      OpenSSL::ASN1::ObjectId("id-ecPublicKey"),
+                      OpenSSL::ASN1::ObjectId(group.curve_name),
+                    ]
+                  ),
+                  OpenSSL::ASN1::BitString(to_octet_string(:uncompressed))
+                ]
+              )
 
               OpenSSL::PKey::EC.new(asn1.to_der)
             end

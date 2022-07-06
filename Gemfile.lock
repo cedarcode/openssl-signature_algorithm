@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openssl-signature_algorithm (1.1.1)
+    openssl-signature_algorithm (1.2.1)
       openssl (> 2.0, < 3.1)
 
 GEM
