@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     openssl-signature_algorithm (1.2.1)
-      openssl (> 2.0, < 3.1)
+      openssl (> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -61,4 +61,4 @@ DEPENDENCIES
   rubocop (~> 0.80.1)
 
 BUNDLED WITH
-   2.2.8
+   2.3.26
