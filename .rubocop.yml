@@ -1,6 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.4
   DisabledByDefault: true
+  NewCops: disable
   Exclude:
     - "gemfiles/**/*"
     - "vendor/bundle/**/*"
@@ -19,6 +20,9 @@ Layout/LineLength:
 
 Lint:
   Enabled: true
+
+Lint/MissingSuper:
+  Enabled: false
 
 Naming:
   Enabled: true
