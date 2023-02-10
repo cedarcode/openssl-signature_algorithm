@@ -1,6 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.4
   DisabledByDefault: true
+  NewCops: disable
   Exclude:
     - "gemfiles/**/*"
     - "vendor/bundle/**/*"
@@ -17,8 +18,18 @@ Layout:
 Layout/LineLength:
   Max: 120
 
+# This is actually the default for Rubocop >1.23, but we need to
+# manually set it to true because that version does not support Ruby
+# <2.6, so that for those versions of Ruby an older version of Rubocop
+# ends up being installed and thus Rubocop fails.
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
 Lint:
   Enabled: true
+
+Lint/MissingSuper:
+  Enabled: false
 
 Naming:
   Enabled: true
