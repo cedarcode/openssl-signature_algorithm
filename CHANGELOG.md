@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.3.0] - 2023-02-15
+
+- Loose OpenSSL dependency to support 3.1 users. Thanks @bdewater <3
+
 ## [v1.2.1] - 2022-06-05
 
 - Support OpenSSL ~>3.0.0. Credits to @ClearlyClaire <3
@@ -88,6 +92,7 @@
 - `OpenSSL::SignatureAlgorithm::RSAPSS`
 - `OpenSSL::SignatureAlgorithm::RSAPKCS1`
 
+[v1.3.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.2.1...v1.3.0/
 [v1.2.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.1.1...v1.2.1/
 [v1.1.1]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.1.0...v1.1.1/
 [v1.1.0]: https://github.com/cedarcode/openssl-signature_algorithm/compare/v1.0.0...v1.1.0/
@@ -100,3 +105,4 @@
 
 [@santiagorodriguez96]: https://github.com/santiagorodriguez96
 [@ClearlyClaire]: https://github.com/clearlyclaire
+[@bdewater]: https://github.com/bdewater
