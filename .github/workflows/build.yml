@@ -50,6 +50,6 @@ jobs:
         bundler-cache: true
     - name: Run rubocop
       run: bundle exec rubocop
-      if: ${{ matrix.ruby == '3.2' }}
+      if: ${{ matrix.ruby == '3.3' }}
     - name: Run tests
       run: bundle exec rspec
