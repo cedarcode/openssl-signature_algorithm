@@ -38,6 +38,13 @@ runs:
       run: |
         echo "~/rubies/ruby-${{ inputs.version }}/bin" >> $GITHUB_PATH
 
+    - name: Trust system CA certificates (Ruby 2.4's bundled RubyGems lacks current roots)
+      if: inputs.version == '2.4'
+      shell: bash
+      run: |
+        echo "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt" >> $GITHUB_ENV
+        echo "SSL_CERT_DIR=/etc/ssl/certs" >> $GITHUB_ENV
+
     - name: Install Bundler
       shell: bash
       run: |
