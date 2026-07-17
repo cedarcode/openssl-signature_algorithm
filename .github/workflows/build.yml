@@ -85,6 +85,10 @@ jobs:
             gemfile: openssl_2_1
           - ruby-version: '3.4'
             gemfile: openssl_2_2
+          - ruby-version: '4.0'
+            gemfile: openssl_2_1
+          - ruby-version: '4.0'
+            gemfile: openssl_2_2
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
