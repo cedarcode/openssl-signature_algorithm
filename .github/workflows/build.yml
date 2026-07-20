@@ -31,6 +31,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
+          - '4.0'
           - 3.4
           - 3.3
           - 3.2
@@ -83,6 +84,10 @@ jobs:
           - ruby-version: '3.4'
             gemfile: openssl_2_1
           - ruby-version: '3.4'
+            gemfile: openssl_2_2
+          - ruby-version: '4.0'
+            gemfile: openssl_2_1
+          - ruby-version: '4.0'
             gemfile: openssl_2_2
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
