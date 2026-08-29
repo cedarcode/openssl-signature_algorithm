@@ -87,9 +87,9 @@ module OpenSSL
       def formatted_signature(signature)
         n = (verify_key_length.to_f / BYTE_LENGTH).ceil
 
-        if signature.size == n * 2
-          r = signature[0..(n - 1)]
-          s = signature[n..-1]
+        if signature.bytesize == n * 2
+          r = signature.byteslice(0, n)
+          s = signature.byteslice(n, n)
 
           OpenSSL::ASN1::Sequence.new([r, s].map { |int| OpenSSL::ASN1::Integer.new(OpenSSL::BN.new(int, 2)) }).to_der
         else
