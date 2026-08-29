@@ -38,6 +38,8 @@ module OpenSSL
 
         verify_key.verify(hash_function, formatted_signature, verification_data) ||
           raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
+      rescue OpenSSL::PKey::PKeyError
+        raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
       end
     end
   end
