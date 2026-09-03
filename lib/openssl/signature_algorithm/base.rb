@@ -29,6 +29,8 @@ module OpenSSL
       end
 
       def verify(signature, verification_data)
+        validate_verification_inputs!(signature, verification_data)
+
         formatted_signature =
           if respond_to?(:formatted_signature, true)
             formatted_signature(signature)
@@ -39,6 +41,14 @@ module OpenSSL
         verify_key.verify(hash_function, formatted_signature, verification_data) ||
           raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
       rescue OpenSSL::PKey::PKeyError
+        raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
+      end
+
+      private
+
+      def validate_verification_inputs!(signature, verification_data)
+        return if signature.is_a?(String) && verification_data.is_a?(String)
+
         raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
       end
     end
