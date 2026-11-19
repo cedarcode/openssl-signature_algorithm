@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Exclude the development `Gemfile` and `Gemfile.lock` from the packaged gem. [#27](https://github.com/cedarcode/openssl-signature_algorithm/pull/27)
+
 ## [v1.3.0] - 2023-02-15
 
 - Loose OpenSSL dependency to support 3.1 users. Thanks @bdewater <3
