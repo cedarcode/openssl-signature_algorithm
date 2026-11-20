@@ -23,7 +23,7 @@ module OpenSSL
         end
 
         def initialize(*args)
-          super(OpenSSL::PKey::RSA.new(*args))
+          super(OpenSSL::PKey::RSA.new(*args).public_key)
         end
 
         def serialize
