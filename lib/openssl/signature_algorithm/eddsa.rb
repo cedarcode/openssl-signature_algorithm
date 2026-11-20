@@ -39,8 +39,9 @@ module OpenSSL
       end
 
       def verify(signature, verification_data)
+        validate_verification_inputs!(signature, verification_data)
         verify_key.verify(signature, verification_data)
-      rescue ::Ed25519::VerifyError
+      rescue ::Ed25519::VerifyError, ArgumentError
         raise(OpenSSL::SignatureAlgorithm::SignatureVerificationError, "Signature verification failed")
       end
     end

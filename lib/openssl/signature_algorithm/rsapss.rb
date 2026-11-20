@@ -11,6 +11,7 @@ module OpenSSL
       end
 
       def verify(signature, verification_data)
+        validate_verification_inputs!(signature, verification_data)
         verify_key.verify_pss(
           hash_function,
           signature,
