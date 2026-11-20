@@ -55,6 +55,18 @@ module OpenSSL
         def verify(*args)
           ec_key.verify(*args)
         end
+
+        def invert!
+          __getobj__.invert!.tap { @ec_key = nil }
+        end
+
+        def make_affine!
+          __getobj__.make_affine!.tap { @ec_key = nil }
+        end
+
+        def set_to_infinity!
+          __getobj__.set_to_infinity!.tap { @ec_key = nil }
+        end
       end
 
       ACCEPTED_PARAMETERS = [
