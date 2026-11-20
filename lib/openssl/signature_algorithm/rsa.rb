@@ -44,6 +44,10 @@ module OpenSSL
         end
       end
 
+      def compatible_verify_key?(key)
+        super && key.respond_to?(:n) && key.respond_to?(:e)
+      end
+
       def generate_signing_key(size: DEFAULT_KEY_SIZE)
         @signing_key = SigningKey.new(size)
       end

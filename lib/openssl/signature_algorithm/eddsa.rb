@@ -34,6 +34,10 @@ module OpenSSL
         @signing_key = SigningKey.generate
       end
 
+      def compatible_verify_key?(key)
+        key.is_a?(::Ed25519::VerifyKey)
+      end
+
       def sign(data)
         signing_key.sign(data)
       end
